@@ -1,4 +1,5 @@
 const net = require('net');
+const parser = require('./parse');
 
 //  类 Request
 class Request {
@@ -166,13 +167,13 @@ class TrunkBodyParser {
     if(this.current == this.WATTING_LENGTH){
       if(char === '\r'){
         if(this.length === 0){
+          console.log('finished');
           this.isFinished = true;
         }
         this.current = this.WATTING_LENGTH_LINE_END;
       }else{
         this.length *= 16;
         this.length += parseInt(char, 16);
-        console.log(this.length);
       }
     }else if(this.current === this.WATTING_LENGTH_LINE_END){
       if(char === '\n'){
@@ -213,6 +214,6 @@ void async function () {
     }
   });
   let response = await request.send();
-  console.log("-------------------------response-------------------------")
-  console.log(response);
+  
+  let dom = parser.parserHtml(response.body);
 }();
