@@ -67,7 +67,7 @@ class ResponseParser {
     this.WATTING_STATUS_LINE = 0;
     this.WATTING_STATUS_LINE_END = 1;
     this.WATTING_HEADER_NAME = 2;
-    this.WATTING_HEADER_SAPACE =3;
+    this.WATTING_HEADER_SPACE =3;
     this.WATTING_HEADER_VALUE = 4;
     this.WATTING_HEADER_LINE_END = 5;
     this.WATTING_HEADER_BLOCK_END = 6;
@@ -113,7 +113,7 @@ class ResponseParser {
       }
     }else if(this.current === this.WATTING_HEADER_NAME){
       if(char === ':'){
-        this.current = this.WATTING_HEADER_SAPACE;
+        this.current = this.WATTING_HEADER_SPACE;
       }else if(char === '\r'){
         this.current = this.WATTING_HEADER_BLOCK_END;
         if(this.headers['Transfer-Encoding'] === 'chunked'){
@@ -122,7 +122,7 @@ class ResponseParser {
       }else{
         this.headerName += char;
       }
-    }else if(this.current === this.WATTING_HEADER_SAPACE){
+    }else if(this.current === this.WATTING_HEADER_SPACE){
       if(char === ' '){
         this.current = this.WATTING_HEADER_VALUE;
       }
@@ -149,7 +149,7 @@ class ResponseParser {
   }
 }
 
-// TrunkBodyParser 类 解析bady
+// TrunkBodyParser 类 解析body
 class TrunkBodyParser {
   constructor() {
     this.WATTING_LENGTH = 0;
