@@ -214,6 +214,8 @@ void async function () {
     }
   });
   let response = await request.send();
-  
+
   let dom = parser.parserHtml(response.body);
+
+  console.log(dom);
 }();

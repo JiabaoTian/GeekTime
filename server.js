@@ -16,13 +16,21 @@ http.createServer(function (request, response) {
     response.end(
       `<html lang="en">
       <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <title>Document</title>
       </head>
-      <body>
+      <style>
+        body #main{
+          background-color: red;
+          width: 100px;
+          height: 100px;
+        }
         
+      </style>
+      <body>
+        <div id='main'></div>
+        <img src='#' />
       </body>
       </html>`);
   })
