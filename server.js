@@ -22,15 +22,29 @@ http.createServer(function (request, response) {
       </head>
       <style>
         body #main{
-          background-color: red;
+          display: flex;
+          background-color: rgb(255,255,255);
+          width: 500px;
+          height: 300px;
+        }
+
+        #inner-div{
           width: 100px;
           height: 100px;
+          background-color:  rgb(0,255,0);
+        }
+        #inner-div2{
+          height: 300px;
+          flex: 1;          
+          background-color:  rgb(255,0,0);
         }
         
       </style>
       <body>
-        <div id='main'></div>
-        <img src='#' />
+        <div id='main'>
+          <div id='inner-div'></div>
+          <div id='inner-div2'></div>
+        </div>
       </body>
       </html>`);
   })

@@ -1,3 +1,5 @@
+const layout = require('./layout.js');
+
 const css = require('css');
 
 let currentToken = null;   // 全局状态
@@ -154,6 +156,7 @@ function emit(token){
             if(token.tagName === 'style'){
                 addCSSRules(top.children[0].content);
             }
+            layout(top);
             stack.pop();
         }
         currentTextNode = null ;
@@ -394,4 +397,5 @@ module.exports.parserHtml  = function parserHtml(html) {
     }
     state = state(EOF);
     console.log(stack[0])
+    return stack[0];
 }
